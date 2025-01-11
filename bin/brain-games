@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Greetings
+ */
+
+print_r("Welcome to the Brain Games!\n");
+
