@@ -1,6 +1,9 @@
 brain-games:
 	php bin/brain-games
 
+brain-even:
+	php ./bin/brain-even
+
 install:
 	composer install
 

@@ -2,7 +2,10 @@
     "name": "hexlet/code",
     "description": "first project",
     "type": "project",
-    "bin": "bin/brain-games",
+    "bin": [
+        "bin/brain-games",
+        "bin/brain-even"
+    ],
     "autoload": {
         "files": [
             "src/Cli.php"
