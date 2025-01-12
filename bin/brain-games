@@ -1,9 +1,8 @@
 #!/usr/bin/env php
 <?php
 
-/**
- * Greetings
- */
+require_once __DIR__ . '/../vendor/autoload.php';
+ 
+use function BrainGames\Cli\sayHello;
 
-print_r("Welcome to the Brain Games!\n");
-
+sayHello();
