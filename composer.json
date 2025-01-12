@@ -4,8 +4,12 @@
     "type": "project",
     "bin": "bin/brain-games",
     "autoload": {
+        "files": [
+            "src/Cli.php"
+        ],
         "psr-4": {
-            "Hexlet\\Code\\": "src/"
+            "Hexlet\\Code\\": "src/",
+            "BrainGames\\Cli\\": "src/"
         }
     },
     "authors": [
@@ -14,5 +18,7 @@
             "email": "barsheel@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "wp-cli/php-cli-tools": "^0.12.1"
+    }
 }
