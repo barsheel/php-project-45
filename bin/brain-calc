@@ -4,7 +4,7 @@
 /**
  * Brain-Calc game 
  * 
- * The user guesses the number is even or not
+ * The user have to find result of expression
  */
 
 use function BrainGames\Engine\play;
