@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Brain-Gcd game 
+ * 
+ * The user have to find Gcd of two numbers
+ */
+
+use function BrainGames\Engine\play;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+play(3, "BrainGames\Games\Gcd\askQuestion");

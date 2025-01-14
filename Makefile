@@ -7,6 +7,9 @@ brain-even:
 brain-calc:
 	php ./bin/brain-calc
 
+brain-gcd:
+	php ./bin/brain-gcd
+
 install:
 	composer install
 	composer dump-autoload
