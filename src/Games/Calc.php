@@ -14,8 +14,6 @@ use function BrainGames\Cli\printWrongAnswerMessage;
 use function BrainGames\Cli\printCorrectAnswerMessage;
 use function BrainGames\Engine\play;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
-
 /**
  * Ask a question, print message and return boolean result
  *

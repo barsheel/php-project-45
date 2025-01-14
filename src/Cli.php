@@ -9,9 +9,6 @@ namespace BrainGames\Cli;
 use function cli\line;
 use function cli\prompt;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-
 /**
  * Greetings function
  * @return string $name of the user

@@ -14,9 +14,6 @@ use function BrainGames\Cli\printWinMessage;
 use function BrainGames\Cli\printLoseMessage;
 use function BrainGames\Cli\askName;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-
 /**
  * Main cycle of game. User have to introduce himself and answer for questions.
  *
