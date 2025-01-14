@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Brain-Calc game 
+ * 
+ * The user guesses the number is even or not
+ */
+
+use function BrainGames\Engine\play;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+play(3, "BrainGames\Games\Calc\askQuestion");
