@@ -6,3 +6,6 @@
 <a href="https://asciinema.org/a/wVxv4jvdVrTfixAaQdzuoX9kV">asciinema demo cast for brain-even</a>
 
 <a href="https://asciinema.org/a/eVS2KVPvaILKHw4LXOyoK9393">asciinema demo cast for brain-calc</a>
+
+<a href="https://asciinema.org/a/ySv4yEZPDWvzo6tNc0eERqVOg">asciinema demo cast for brain-gcd</a>
+
