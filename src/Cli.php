@@ -29,7 +29,7 @@ function printWrongAnswerMessage(string $correctAnswer, string $wrongAnswer): vo
 
 function printLoseMessage(string $name): void
 {
-    line("Let's try again, {$name}");
+    line("Let's try again, {$name}!");
 }
 
 function printCorrectAnswerMessage(): void
