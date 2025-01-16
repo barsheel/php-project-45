@@ -13,6 +13,7 @@ use function cli\prompt;
 use function BrainGames\Cli\printWrongAnswerMessage;
 use function BrainGames\Cli\printCorrectAnswerMessage;
 use function BrainGames\Engine\play;
+use function BrainGames\Engine\checkAnswer;
 
 /**
  * Ask a question, print message and return boolean result
@@ -28,13 +29,7 @@ function askQuestion(): bool
     line("Question: {$number1} {$number2}");
     $answer = prompt("Your answer");
 
-    if ((int)$answer === $correctAnswer) {
-        printCorrectAnswerMessage();
-        return true;
-    } else {
-        printWrongAnswerMessage($correctAnswer, $answer);
-        return false;
-    }
+    return checkAnswer($answer, $correctAnswer);
 }
 
 function getGcd(int $number1, int $number2): int
