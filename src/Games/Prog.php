@@ -3,7 +3,7 @@
 /**
  * Brain-Even game
  *
- * The user guesses the number is even or not
+ * The user guesses the missing number in progression
  */
 
 namespace BrainGames\Games\Prog;
