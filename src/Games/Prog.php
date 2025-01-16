@@ -24,7 +24,7 @@ function askQuestion(): bool
 {
     $progressionLength = random_int(5, 10);
     $delta = random_int(1, 100);
-    $progression[] = random_int(0, 100);
+    $progression = [random_int(0, 100)];
     for ($i = 1; $i < $progressionLength; $i++) {
         $progression[] = $progression[$i - 1] + $delta;
     }
