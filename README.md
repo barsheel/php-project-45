@@ -10,3 +10,6 @@
 <a href="https://asciinema.org/a/ySv4yEZPDWvzo6tNc0eERqVOg">asciinema demo cast for brain-gcd</a>
 
 <a href="https://asciinema.org/a/TpWRkOudDXvL8AL9TENaZU08A">asciinema demo cast for brain-progression</a>
+
+<a href="https://asciinema.org/a/ynw7lfRML30BGNxoXXNxUVFy0">asciinema demo cast for brain-prime</a>
+
