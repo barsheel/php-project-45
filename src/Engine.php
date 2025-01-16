@@ -32,3 +32,21 @@ function play(int $questionCount, string $callbackQuestion): void
     }
     printWinMessage($name);
 }
+
+/**
+ * Compare answer and correct answer
+ * 
+ * @param string $answer
+ * @param string $correctAnswer
+ * @return bool true if answer is correct, false if not
+ */
+function checkAnswer(string $answer, string $correctAnswer): bool
+{
+    if ($answer === $correctAnswer) {
+        printCorrectAnswerMessage();
+        return true;
+    } else {
+        printWrongAnswerMessage($correctAnswer, $answer);
+        return false;
+    }
+}
