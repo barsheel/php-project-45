@@ -20,7 +20,7 @@ use function BrainGames\Cli\askName;
  * @param int $questionCount
  * @param string $callbackQuestion - callback function for question
  */
-function play(int $questionCount, string $callbackQuestion): void
+function play(int $questionCount, callable $callbackQuestion): void
 {
     $name = askName();
 
@@ -36,11 +36,11 @@ function play(int $questionCount, string $callbackQuestion): void
 /**
  * Compare answer and correct answer
  *
- * @param string $answer
- * @param string $correctAnswer
+ * @param string|int $answer
+ * @param string|int $correctAnswer
  * @return bool true if answer is correct, false if not
  */
-function checkAnswer(string $answer, string $correctAnswer): bool
+function checkAnswer(string|int $answer, string|int $correctAnswer): bool
 {
     if ($answer === $correctAnswer) {
         printCorrectAnswerMessage();
