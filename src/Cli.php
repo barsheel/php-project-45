@@ -21,7 +21,7 @@ function askName(): string
     return $name;
 }
 
-function printWrongAnswerMessage(string $correctAnswer, string $wrongAnswer): void
+function printWrongAnswerMessage(string|int $correctAnswer, string|int $wrongAnswer): void
 {
     line("'{$wrongAnswer}' is wrong answer ;(. 
         Correct answer was '{$correctAnswer}'.");
