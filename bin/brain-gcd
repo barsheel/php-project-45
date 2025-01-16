@@ -11,4 +11,4 @@ use function BrainGames\Engine\play;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-play(3, "BrainGames\Games\Gcd\askQuestion");
+play("BrainGames\Games\Gcd\askQuestion");

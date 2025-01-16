@@ -14,17 +14,18 @@ use function BrainGames\Cli\printWinMessage;
 use function BrainGames\Cli\printLoseMessage;
 use function BrainGames\Cli\askName;
 
+const ROUND_COUNT = 3;
+
 /**
  * Main cycle of game. User have to introduce himself and answer for questions.
  *
- * @param int $questionCount
- * @param string $callbackQuestion - callback function for question
+ * @param callable $callbackQuestion - callback function for question
  */
-function play(int $questionCount, callable $callbackQuestion): void
+function play(callable $callbackQuestion): void
 {
     $name = askName();
 
-    for ($i = 0; $i < $questionCount; $i++) {
+    for ($i = 0; $i < ROUND_COUNT; $i++) {
         if (!$callbackQuestion()) {
             printLoseMessage($name);
             return;
@@ -42,7 +43,7 @@ function play(int $questionCount, callable $callbackQuestion): void
  */
 function checkAnswer(string|int $answer, string|int $correctAnswer): bool
 {
-    if ($answer === $correctAnswer) {
+    if ((string)$answer === (string)$correctAnswer) {
         printCorrectAnswerMessage();
         return true;
     } else {
