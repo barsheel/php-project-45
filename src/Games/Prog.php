@@ -38,6 +38,6 @@ function askQuestion(): bool
     line("What number is missing in the progression?");
     line("Question: {$progressionToAsk}");
     $answer = prompt("Your answer");
-    
+
     return checkAnswer($answer, $correctAnswer);
 }

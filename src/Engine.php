@@ -35,7 +35,7 @@ function play(int $questionCount, string $callbackQuestion): void
 
 /**
  * Compare answer and correct answer
- * 
+ *
  * @param string $answer
  * @param string $correctAnswer
  * @return bool true if answer is correct, false if not

@@ -15,7 +15,6 @@ use function BrainGames\Cli\printCorrectAnswerMessage;
 use function BrainGames\Engine\play;
 use function BrainGames\Engine\checkAnswer;
 
-
 /**
  * Ask a question, print message and return boolean result
  *
@@ -25,7 +24,7 @@ function askQuestion(): bool
 {
     $numberToAsk = random_int(0, 1000);
 
-    if (isPrime($numberToAsk)){
+    if (isPrime($numberToAsk)) {
         $correctAnswer = "yes";
     } else {
         $correctAnswer = "no";
