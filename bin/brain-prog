@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * Brain-Prog game 
+ * 
+ * The user have to find missing element in progression
+ */
+
+use function BrainGames\Engine\play;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+play(3, "BrainGames\Games\Prog\askQuestion");

@@ -10,6 +10,9 @@ brain-calc:
 brain-gcd:
 	php ./bin/brain-gcd
 
+brain-progression:
+	php ./bin/brain-prog
+
 install:
 	composer install
 	composer dump-autoload
