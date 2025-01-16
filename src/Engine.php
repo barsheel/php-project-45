@@ -8,24 +8,18 @@ namespace BrainGames\Engine;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Cli\printWrongAnswerMessage;
-use function BrainGames\Cli\printCorrectAnswerMessage;
-use function BrainGames\Cli\printWinMessage;
-use function BrainGames\Cli\printLoseMessage;
-use function BrainGames\Cli\askName;
 
-const ROUND_COUNT = 3;
+const GAME_ROUND_COUNT = 3;
 
 /**
- * Main cycle of game. User have to introduce himself and answer for questions.
+ * Main cycle of game. User have to introduce himself and answer questions.
  *
- * @param callable $callbackQuestion - callback function for question
+ * @param callable $callbackQuestion - callback function question
  */
 function play(callable $callbackQuestion): void
 {
-    $name = askName();
-
-    for ($i = 0; $i < ROUND_COUNT; $i++) {
+    $name = askUserName();
+    for ($i = 0; $i < GAME_ROUND_COUNT; $i++) {
         if (!$callbackQuestion()) {
             printLoseMessage($name);
             return;
@@ -34,20 +28,54 @@ function play(callable $callbackQuestion): void
     printWinMessage($name);
 }
 
+
 /**
- * Compare answer and correct answer
- *
- * @param string|int $answer
- * @param string|int $correctAnswer
- * @return bool true if answer is correct, false if not
+ * Compare user's answer and correct answer and print message
  */
-function checkAnswer(string|int $answer, string|int $correctAnswer): bool
+function checkAnswer(string|int $userAnswer, string|int $correctAnswer): bool
 {
-    if ((string)$answer === (string)$correctAnswer) {
+    if ((string)$userAnswer === (string)$correctAnswer) {
         printCorrectAnswerMessage();
         return true;
     } else {
-        printWrongAnswerMessage($correctAnswer, $answer);
+        printWrongAnswerMessage($correctAnswer, $userAnswer);
         return false;
     }
+}
+
+
+/**
+ * Greetings function - say hello and get name
+ */
+function askUserName(): string
+{
+    line("Welcome to the Brain Games!\n");
+    $name = prompt("May I have your name?");
+    line("Hello, %s!", $name);
+    return $name;
+}
+
+
+function printWrongAnswerMessage(string|int $correctAnswer, string|int $wrongAnswer): void
+{
+    line("'{$wrongAnswer}' is wrong answer ;(. 
+        Correct answer was '{$correctAnswer}'.");
+}
+
+
+function printLoseMessage(string $name): void
+{
+    line("Let's try again, {$name}!");
+}
+
+
+function printCorrectAnswerMessage(): void
+{
+    line("Correct!");
+}
+
+
+function printWinMessage(string $name): void
+{
+    line("Congratulations, {$name}!");
 }

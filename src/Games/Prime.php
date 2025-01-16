@@ -10,10 +10,10 @@ namespace BrainGames\Games\Prime;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Cli\printWrongAnswerMessage;
-use function BrainGames\Cli\printCorrectAnswerMessage;
 use function BrainGames\Engine\play;
 use function BrainGames\Engine\checkAnswer;
+
+const MAX_NUMBER_TO_ASK = 1000;
 
 /**
  * Ask a question, print message and return boolean result
@@ -22,7 +22,7 @@ use function BrainGames\Engine\checkAnswer;
  */
 function askQuestion(): bool
 {
-    $numberToAsk = random_int(0, 1000);
+    $numberToAsk = random_int(0, MAX_NUMBER_TO_ASK);
 
     if (isPrime($numberToAsk)) {
         $correctAnswer = "yes";

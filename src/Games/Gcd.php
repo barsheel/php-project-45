@@ -10,10 +10,10 @@ namespace BrainGames\Games\Gcd;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Cli\printWrongAnswerMessage;
-use function BrainGames\Cli\printCorrectAnswerMessage;
 use function BrainGames\Engine\play;
 use function BrainGames\Engine\checkAnswer;
+
+const MAX_NUMBER_TO_ASK = 100;
 
 /**
  * Ask a question, print message and return boolean result
@@ -22,9 +22,10 @@ use function BrainGames\Engine\checkAnswer;
  */
 function askQuestion(): bool
 {
-    $number1 = random_int(0, 100);
-    $number2 = random_int(0, 100);
+    $number1 = random_int(0, MAX_NUMBER_TO_ASK);
+    $number2 = random_int(0, MAX_NUMBER_TO_ASK);
     $correctAnswer = getGcd($number1, $number2);
+
     line("Find the greatest common divisor of given numbers.");
     line("Question: {$number1} {$number2}");
     $answer = prompt("Your answer");
