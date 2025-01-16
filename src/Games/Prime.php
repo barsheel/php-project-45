@@ -30,7 +30,7 @@ function askQuestion(): bool
         $correctAnswer = "no";
     }
 
-    line("Answer \"yes\" if the number is prime, otherwise answer \"no\".");
+    line("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
     line("Question: {$numberToAsk}");
     $answer = prompt("Your answer");
 
