@@ -7,7 +7,9 @@
         "bin/brain-even",
         "bin/brain-calc",
         "bin/brain-gcd",
-        "bin/brain-prog"
+        "bin/brain-prog",
+        "bin/brain-prime"
+
     ],
     "autoload": {
         "files": [
@@ -16,7 +18,8 @@
             "src/Games/Calc.php",
             "src/Games/Even.php",
             "src/Games/Gcd.php",
-            "src/Games/Prog.php"
+            "src/Games/Prog.php",
+            "src/Games/Prime.php"
         ],
         "psr-4": {
             "Hexlet\\Code\\": "src/",

@@ -13,6 +13,9 @@ brain-gcd:
 brain-progression:
 	php ./bin/brain-prog
 
+brain-prime:
+	php ./bin/brain-prime
+
 install:
 	composer install
 	composer dump-autoload
