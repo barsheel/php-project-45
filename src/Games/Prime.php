@@ -16,7 +16,7 @@ const MAX_NUMBER_TO_ASK = 1000;
 /**
  * Ask a question, print message and return boolean result
  *
- * @return bool - correct or wrong answer
+ * @return array - returns array of question string and correct answer
  */
 function askQuestion(): array
 {
