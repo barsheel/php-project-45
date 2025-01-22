@@ -10,8 +10,6 @@ namespace BrainGames\Games\Gcd;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Engine\play;
-use function BrainGames\Engine\checkAnswer;
 
 const MAX_NUMBER_TO_ASK = 100;
 
@@ -20,30 +18,21 @@ const MAX_NUMBER_TO_ASK = 100;
  *
  * @return bool - correct or wrong answer
  */
-function askQuestion(): bool
+function askQuestion(): array
 {
-    $number1 = random_int(0, MAX_NUMBER_TO_ASK);
-    $number2 = random_int(0, MAX_NUMBER_TO_ASK);
+    $number1 = random_int(1, MAX_NUMBER_TO_ASK);
+    $number2 = random_int(1, MAX_NUMBER_TO_ASK);
     $correctAnswer = getGcd($number1, $number2);
 
-    line("Find the greatest common divisor of given numbers.");
-    line("Question: {$number1} {$number2}");
-    $answer = prompt("Your answer");
+    $questionString = "Find the greatest common divisor of given numbers.\nQuestion: {$number1} {$number2}";
 
-    return checkAnswer($answer, $correctAnswer);
+    return ["question" => $questionString, "answer" => $correctAnswer];
 }
 
 function getGcd(int $number1, int $number2): int
 {
-    if ($number1 === 0 || $number2 === 0) {
-        return $number1 + $number2;
+    if ($number2 === 0) {
+        return $number1;
     }
-
-    if ($number1 > $number2) {
-        $number1 = $number1 % $number2;
-        return getGcd($number1, $number2);
-    } else {
-        $number2 = $number2 % $number1;
-        return getGcd($number1, $number2);
-    }
+    return getGcd($number2, $number1 % $number2);
 }

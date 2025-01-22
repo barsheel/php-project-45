@@ -18,64 +18,36 @@ const GAME_ROUND_COUNT = 3;
  */
 function play(callable $callbackQuestion): void
 {
-    $name = askUserName();
+    line("Welcome to the Brain Games!\n");
+    $name = prompt("May I have your name?");
+    line("Hello, %s!", $name);
+
     for ($i = 0; $i < GAME_ROUND_COUNT; $i++) {
-        if (!$callbackQuestion()) {
-            printLoseMessage($name);
+        $gameResult = $callbackQuestion();
+
+        $question = $gameResult["question"];
+        line($question);
+
+        $correctAnswer = $gameResult["answer"];
+        $userAnswer = prompt("Your answer");
+
+        if (checkAnswer($userAnswer, $correctAnswer)) {
+            line("Correct!");
+        } else {
+            line("'{$userAnswer}' is wrong answer ;(. 
+                Correct answer was '{$correctAnswer}'.");
+            line("Let's try again, {$name}!");
             return;
         }
     }
-    printWinMessage($name);
+    line("Congratulations, {$name}!");
 }
 
 
 /**
  * Compare user's answer and correct answer and print message
  */
-function checkAnswer(string|int $userAnswer, string|int $correctAnswer): bool
+function checkAnswer(string $userAnswer, string|int $correctAnswer): bool
 {
-    if ((string)$userAnswer === (string)$correctAnswer) {
-        printCorrectAnswerMessage();
-        return true;
-    } else {
-        printWrongAnswerMessage($correctAnswer, $userAnswer);
-        return false;
-    }
-}
-
-
-/**
- * Greetings function - say hello and get name
- */
-function askUserName(): string
-{
-    line("Welcome to the Brain Games!\n");
-    $name = prompt("May I have your name?");
-    line("Hello, %s!", $name);
-    return $name;
-}
-
-
-function printWrongAnswerMessage(string|int $correctAnswer, string|int $wrongAnswer): void
-{
-    line("'{$wrongAnswer}' is wrong answer ;(. 
-        Correct answer was '{$correctAnswer}'.");
-}
-
-
-function printLoseMessage(string $name): void
-{
-    line("Let's try again, {$name}!");
-}
-
-
-function printCorrectAnswerMessage(): void
-{
-    line("Correct!");
-}
-
-
-function printWinMessage(string $name): void
-{
-    line("Congratulations, {$name}!");
+    return $userAnswer === (string)$correctAnswer;
 }

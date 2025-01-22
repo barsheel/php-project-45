@@ -10,8 +10,6 @@ namespace BrainGames\Games\Prog;
 
 use function cli\line;
 use function cli\prompt;
-use function BrainGames\Engine\play;
-use function BrainGames\Engine\checkAnswer;
 
 const MIN_PROGRESSION_LENGTH = 5;
 const MAX_PROGRESSION_LENGTH = 10;
@@ -23,7 +21,7 @@ const MAX_FIRST_ELEMENT_VALUE = 100;
  *
  * @return bool - correct or wrong answer
  */
-function askQuestion(): bool
+function askQuestion(): array
 {
     //fill progression to ask
     $progressionLength = random_int(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
@@ -42,9 +40,7 @@ function askQuestion(): bool
     //create progression string
     $progressionToAsk = implode(" ", $progression);
 
-    line("What number is missing in the progression?");
-    line("Question: {$progressionToAsk}");
-    $answer = prompt("Your answer");
+    $questionString = "What number is missing in the progression?\nQuestion: {$progressionToAsk}";
 
-    return checkAnswer($answer, $correctAnswer);
+    return ["question" => $questionString, "answer" => $correctAnswer];
 }

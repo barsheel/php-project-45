@@ -7,6 +7,6 @@ $autoloadGlobalPath =__DIR__ . '/../../../autoload.php';
 $autoloadLocalPath =__DIR__ . '/../vendor/autoload.php';
 file_exists($autoloadLocalPath) ? require_once $autoloadLocalPath : require_once $autoloadGlobalPath;
  
-use function BrainGames\Engine\askUserName;
+/*use function BrainGames\Engine\askUserName;
 
-askUserName();
+askUserName();*/
