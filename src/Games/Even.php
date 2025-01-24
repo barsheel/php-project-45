@@ -31,5 +31,5 @@ function askQuestion(): array
 
 function isEven(int $number): bool
 {
-    return $number % 2 === 0;
+    return (($number & 1) === 0);
 }
