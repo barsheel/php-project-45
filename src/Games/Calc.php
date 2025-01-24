@@ -8,6 +8,8 @@
 
 namespace BrainGames\Games\Calc;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -46,4 +48,14 @@ function calculate(string $operation, int $operand1, int $operand2): int
         default:
             return 0;
     }
+}
+
+function play(): void
+{
+    $gameResults = [];
+    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
+        $gameResults[] = askQuestion();
+    }
+
+    \BrainGames\Engine\play($gameResults);
 }

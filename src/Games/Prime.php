@@ -8,6 +8,8 @@
 
 namespace BrainGames\Games\Prime;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -35,6 +37,7 @@ function isPrime(int $number): bool
     if ($number === 1) {
         return false;
     }
+
     $n = sqrt($number);
     for ($i = 2; $i < $n; $i++) {
         if ($number % $i === 0) {
@@ -42,4 +45,14 @@ function isPrime(int $number): bool
         }
     }
     return true;
+}
+
+function play(): void
+{
+    $gameResults = [];
+    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
+        $gameResults[] = askQuestion();
+    }
+
+    \BrainGames\Engine\play($gameResults);
 }

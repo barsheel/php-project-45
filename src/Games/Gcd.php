@@ -8,6 +8,8 @@
 
 namespace BrainGames\Games\Gcd;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -35,4 +37,14 @@ function getGcd(int $number1, int $number2): int
         [$number1, $number2] = [$number2, $number1 % $number2];
     }
     return $number1;
+}
+
+function play(): void
+{
+    $gameResults = [];
+    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
+        $gameResults[] = askQuestion();
+    }
+
+    \BrainGames\Engine\play($gameResults);
 }

@@ -8,6 +8,8 @@
 
 namespace BrainGames\Games\Even;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -32,4 +34,14 @@ function askQuestion(): array
 function isEven(int $number): bool
 {
     return (($number & 1) === 0);
+}
+
+function play(): void
+{
+    $gameResults = [];
+    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
+        $gameResults[] = askQuestion();
+    }
+
+    \BrainGames\Engine\play($gameResults);
 }

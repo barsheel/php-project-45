@@ -7,10 +7,10 @@
  * The user have to find missing element in progression
  */
 
-use function BrainGames\Engine\play;
+use function BrainGames\Games\Prog\play;
 
 $autoloadGlobalPath =__DIR__ . '/../../../autoload.php';
 $autoloadLocalPath =__DIR__ . '/../vendor/autoload.php';
 file_exists($autoloadLocalPath) ? require_once $autoloadLocalPath : require_once $autoloadGlobalPath;
 
-play("BrainGames\Games\Prog\askQuestion");
+play();

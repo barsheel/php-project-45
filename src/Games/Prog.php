@@ -8,6 +8,8 @@
 
 namespace BrainGames\Games\Prog;
 
+use BrainGames\Engine;
+
 use function cli\line;
 use function cli\prompt;
 
@@ -43,4 +45,14 @@ function askQuestion(): array
     $questionString = "What number is missing in the progression?\nQuestion: {$progressionToAsk}";
 
     return ["question" => $questionString, "answer" => $correctAnswer];
+}
+
+function play(): void
+{
+    $gameResults = [];
+    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
+        $gameResults[] = askQuestion();
+    }
+
+    \BrainGames\Engine\play($gameResults);
 }
