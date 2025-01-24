@@ -31,8 +31,8 @@ function askQuestion(): array
 
 function getGcd(int $number1, int $number2): int
 {
-    if ($number2 === 0) {
-        return $number1;
+    while ($number2 !== 0) {
+        [$number1, $number2] = [$number2, $number1 % $number2];
     }
-    return getGcd($number2, $number1 % $number2);
+    return $number1;
 }
