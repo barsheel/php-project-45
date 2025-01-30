@@ -12,7 +12,7 @@ use function cli\prompt;
 /**
  * Greetings function
  */
-function askName(): void
+function play(): void
 {
     line("Welcome to the Brain Games!\n");
     $name = prompt("May I have your name?");
