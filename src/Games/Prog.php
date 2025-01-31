@@ -46,7 +46,7 @@ function play(): void
         //create progression string
         $progressionToAsk = implode(" ", $progression);
 
-        $gameResults[] =  ["question" => (string)$progressionToAsk, "answer" => $correctAnswer];
+        $gameResults[] =  ["question" => $progressionToAsk, "answer" => $correctAnswer];
     }
     runGame(QUESTION, $gameResults);
 }
