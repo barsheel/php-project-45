@@ -20,7 +20,7 @@ const QUESTION = "Answer \"yes\" if given number is prime. Otherwise answer \"no
 /**
  * Create an array of questions and answers, and run game
  *
- * @throws Random\RandomException if an appropriate source of randomness in function random_int() cannot be found
+ * @throws \Exception If an appropriate source of randomness in function random_int() cannot be found
  */
 function play(): void
 {

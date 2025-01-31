@@ -23,7 +23,7 @@ const QUESTION = "What number is missing in the progression?";
 /**
  * Create an array of questions and answers, and run game
  *
- * @throws Random\RandomException If an appropriate source of randomness in function random_int() cannot be found
+ * @throws \Exception If an appropriate source of randomness in function random_int() cannot be found
  */
 function play(): void
 {

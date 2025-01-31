@@ -20,7 +20,7 @@ const QUESTION = "What is the result of the expression?";
 /**
  * Create an array of questions and answers, and run game
  *
- * @throws Random\RandomException If an appropriate source of randomness in function random_int() cannot be found
+ * @throws \Exception If an appropriate source of randomness in function random_int() cannot be found
  */
 function play(): void
 {
@@ -48,6 +48,6 @@ function calculate(string $operation, int $operand1, int $operand2): int
         case "*":
             return $operand1 * $operand2;
         default:
-            throw new Exception("Unknown operation");
+            throw new \Exception("Unknown operation");
     }
 }
