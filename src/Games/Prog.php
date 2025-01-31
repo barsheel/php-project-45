@@ -8,51 +8,45 @@
 
 namespace BrainGames\Games\Prog;
 
-use BrainGames\Engine;
-
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\runGame;
+
+use const BrainGames\Engine\GAME_ROUND_COUNT;
 
 const MIN_PROGRESSION_LENGTH = 5;
 const MAX_PROGRESSION_LENGTH = 10;
 const MAX_DIFFERENCE_BETWEEN_ELEMENTS = 100;
 const MAX_FIRST_ELEMENT_VALUE = 100;
+const QUESTION = "What number is missing in the progression?";
 
 /**
- * Ask a question, print message and return boolean result
+ * Create an array of questions and answers, and run game
  *
- * @return array - returns array of question string and correct answer
+ * @throws Random\RandomException If an appropriate source of randomness in function random_int() cannot be found
  */
-function askQuestion(): array
-{
-    //fill progression to ask
-    $progressionLength = random_int(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
-    $firstElement = random_int(0, MAX_FIRST_ELEMENT_VALUE);
-    $difference = random_int(1, MAX_DIFFERENCE_BETWEEN_ELEMENTS);
-    $progression = [$firstElement];
-    for ($i = 1; $i < $progressionLength; $i++) {
-        $progression[] = $progression[$i - 1] + $difference;
-    }
-
-    //select element to ask
-    $elementToAskIndex = random_int(0, $progressionLength - 1);
-    $correctAnswer = $progression[$elementToAskIndex];
-    $progression[$elementToAskIndex] = "..";
-
-    //create progression string
-    $progressionToAsk = implode(" ", $progression);
-
-    $questionString = "What number is missing in the progression?\nQuestion: {$progressionToAsk}";
-
-    return ["question" => $questionString, "answer" => $correctAnswer];
-}
-
 function play(): void
 {
     $gameResults = [];
-    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
-        $gameResults[] = askQuestion();
-    }
+    for ($i = 0; $i < GAME_ROUND_COUNT; $i++) {
+        //fill progression to ask
+        $progressionLength = random_int(MIN_PROGRESSION_LENGTH, MAX_PROGRESSION_LENGTH);
+        $firstElement = random_int(0, MAX_FIRST_ELEMENT_VALUE);
+        $difference = random_int(1, MAX_DIFFERENCE_BETWEEN_ELEMENTS);
+        $progression = [$firstElement];
+        for ($j = 1; $j < $progressionLength; $j++) {
+            $progression[] = $progression[$j - 1] + $difference;
+        }
 
-    \BrainGames\Engine\play($gameResults);
+        //select element to ask
+        $elementToAskIndex = random_int(0, $progressionLength - 1);
+        $correctAnswer = $progression[$elementToAskIndex];
+        $progression[$elementToAskIndex] = "..";
+
+        //create progression string
+        $progressionToAsk = implode(" ", $progression);
+
+        $gameResults[] =  ["question" => (string)$progressionToAsk, "answer" => $correctAnswer];
+    }
+    runGame(QUESTION, $gameResults);
 }

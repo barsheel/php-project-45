@@ -8,32 +8,34 @@
 
 namespace BrainGames\Games\Calc;
 
-use BrainGames\Engine;
-
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\runGame;
+
+use const BrainGames\Engine\GAME_ROUND_COUNT;
 
 const MAX_NUMBER_TO_ASK = 100;
+const QUESTION = "What is the result of the expression?";
 
 /**
- * Ask a question, print message and return boolean result
+ * Create an array of questions and answers, and run game
  *
- * @return array - returns array of question string and correct answer
+ * @throws Random\RandomException If an appropriate source of randomness in function random_int() cannot be found
  */
-function askQuestion(): array
+function play(): void
 {
-    $operand1 = random_int(0, MAX_NUMBER_TO_ASK);
-    $operand2 = random_int(0, MAX_NUMBER_TO_ASK);
+    $gameResults = [];
+    for ($i = 0; $i < GAME_ROUND_COUNT; $i++) {
+        $operand1 = random_int(0, MAX_NUMBER_TO_ASK);
+        $operand2 = random_int(0, MAX_NUMBER_TO_ASK);
+        $operations = ["-", "+", "*"];
+        $operation = $operations[array_rand($operations)];
+        $correctAnswer = calculate($operation, $operand1, $operand2);
+        $expressionToAsk = "{$operand1} {$operation} {$operand2}";
 
-    $operations = ["-", "+", "*"];
-    $operation = $operations[array_rand($operations)];
-
-    $correctAnswer = calculate($operation, $operand1, $operand2);
-
-    $expressionToAsk = "{$operand1} {$operation} {$operand2}";
-    $questionString = "What is the result of the expression?\nQuestion: {$expressionToAsk}";
-
-    return ["question" => $questionString, "answer" => $correctAnswer];
+        $gameResults[] =  ["question" => $expressionToAsk, "answer" => $correctAnswer];
+    }
+    runGame(QUESTION, $gameResults);
 }
 
 function calculate(string $operation, int $operand1, int $operand2): int
@@ -46,16 +48,6 @@ function calculate(string $operation, int $operand1, int $operand2): int
         case "*":
             return $operand1 * $operand2;
         default:
-            return 0;
+            throw new Exception("Unknown operation");
     }
-}
-
-function play(): void
-{
-    $gameResults = [];
-    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
-        $gameResults[] = askQuestion();
-    }
-
-    \BrainGames\Engine\play($gameResults);
 }

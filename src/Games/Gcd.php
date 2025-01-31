@@ -8,27 +8,31 @@
 
 namespace BrainGames\Games\Gcd;
 
-use BrainGames\Engine;
-
 use function cli\line;
 use function cli\prompt;
+use function BrainGames\Engine\runGame;
+
+use const BrainGames\Engine\GAME_ROUND_COUNT;
 
 const MAX_NUMBER_TO_ASK = 100;
+const QUESTION = "Find the greatest common divisor of given numbers.";
 
 /**
- * Ask a question, print message and return boolean result
+ * Create an array of questions and answers, and run game
  *
- * @return array - returns array of question string and correct answer
+ * @throws Random\RandomException If an appropriate source of randomness in function random_int() cannot be found
  */
-function askQuestion(): array
+function play(): void
 {
-    $number1 = random_int(1, MAX_NUMBER_TO_ASK);
-    $number2 = random_int(1, MAX_NUMBER_TO_ASK);
-    $correctAnswer = getGcd($number1, $number2);
+    $gameResults = [];
+    for ($i = 0; $i < GAME_ROUND_COUNT; $i++) {
+        $number1 = random_int(1, MAX_NUMBER_TO_ASK);
+        $number2 = random_int(1, MAX_NUMBER_TO_ASK);
+        $correctAnswer = getGcd($number1, $number2);
 
-    $questionString = "Find the greatest common divisor of given numbers.\nQuestion: {$number1} {$number2}";
-
-    return ["question" => $questionString, "answer" => $correctAnswer];
+        $gameResults[] =  ["question" => "{$number1} {$number2}", "answer" => $correctAnswer];
+    }
+    runGame(QUESTION, $gameResults);
 }
 
 function getGcd(int $number1, int $number2): int
@@ -37,14 +41,4 @@ function getGcd(int $number1, int $number2): int
         [$number1, $number2] = [$number2, $number1 % $number2];
     }
     return $number1;
-}
-
-function play(): void
-{
-    $gameResults = [];
-    for ($i = 0; $i < \BrainGames\Engine\GAME_ROUND_COUNT; $i++) {
-        $gameResults[] = askQuestion();
-    }
-
-    \BrainGames\Engine\play($gameResults);
 }
