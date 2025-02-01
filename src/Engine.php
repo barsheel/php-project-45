@@ -28,14 +28,13 @@ function runGame(string $questionString, array $gameResults): void
         $correctAnswer = $gameResult["answer"];
         $userAnswer = prompt("Your answer");
 
-        if (checkAnswer($userAnswer, $correctAnswer)) {
-            line("Correct!");
-        } else {
+        if (!checkAnswer($userAnswer, $correctAnswer)) {
             line("'{$userAnswer}' is wrong answer ;(. 
-                Correct answer was '{$correctAnswer}'.");
+            Correct answer was '{$correctAnswer}'.");
             line("Let's try again, {$name}!");
             return;
         }
+        line("Correct!");
     }
     line("Congratulations, {$name}!");
 }
